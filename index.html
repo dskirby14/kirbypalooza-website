@@ -11,6 +11,25 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 </head>
+
+<style>
+    :root {
+      /* This changes the main background color */
+      --pico-background-color: #fdf6e3; 
+      
+      /* This changes the text color to make sure it's readable */
+      --pico-color: #000000;
+
+      --pico-primary: #ff5733; /* This would make buttons/links a vibrant orange */
+    }
+  
+    /* If you want a different color for "Dark Mode" users */
+    [data-theme="dark"] {
+      --pico-background-color: #1a202c;
+      --pico-color: #f0f4f8;
+    }
+  </style>
+
 <body>
 
     <nav class="container">
