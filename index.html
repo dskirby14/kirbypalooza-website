@@ -13,24 +13,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
   
     <style>
+       
         :root {
-          /* This changes the main background color #fdf6e3*/
+        /* This changes the main background color #fdf6e3*/
           --pico-background-color: #fdf6e3 !important; 
           
           --pico-primary: #ff5733; /* This would make buttons/links a vibrant orange */
+
+        /* This changes the main body and UI font */
+           --pico-font-family-sans-serif: 'Montserrat', sans-serif;
+            
+        /* This ensures headings and everything else follow suit */
+            --pico-font-family: 'Montserrat', sans-serif;
+
+        /* Force the background and general settings */
+        --pico-background-color: #fdf6e3 !important;
         }
 
-        h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: -1px; color: #2d3436; /* Optional: adds a nice dark charcoal color to the text */}
-
-        body{
-            background-color: #fdf6e3 !important;
+        /* The "Final Word" for the whole page */
+        body, input, select, textarea, button {
+        font-family: 'Montserrat', sans-serif !important;
         }
-      
-        /* If you want a different color for "Dark Mode" users 
-        [data-theme="dark"] {
-          --pico-background-color: #1a202c;
-          --pico-color: #f0f4f8;
-        }*/
+
       </style>
 
 </head>
