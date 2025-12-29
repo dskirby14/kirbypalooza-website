@@ -17,17 +17,6 @@
         --pico-background-color: #ffffff !important;
         }
 
-        h1, h2, h3 {
-          /* Makes the thick letters sit closer together (looks more like a logo) */
-          letter-spacing: -1px;
-          
-          /* Makes the headers a slightly different color than the body text */
-          color: var(--pico-primary); 
-          
-          /* Adds a little extra space above headings */
-          margin-top: 2rem;
-        }
-
         /* The "Final Word" for the whole page */
         body, input, select, textarea, button {
         font-family: 'Montserrat', sans-serif !important;
