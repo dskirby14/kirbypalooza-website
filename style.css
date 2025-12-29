@@ -1,5 +1,4 @@
- :root {
-        /* This changes the main background color #fdf6e3*/
+:root, :root:not([data-theme="dark"]), [data-theme="light"] {        /* This changes the main background color #fdf6e3*/
           --pico-background-color: #fdf6e3 !important; 
           
           --pico-primary: #ff5733; /* This would make buttons/links a vibrant orange */
