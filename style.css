@@ -1,7 +1,7 @@
 :root, :root:not([data-theme="dark"]), [data-theme="light"] {        /* This changes the main background color #fdf6e3*/
-          --pico-background-color: #fdf6e3 !important; 
+          --pico-background-color: #ffffff !important; 
           
-          --pico-primary: #ff5733; /* This would make buttons/links a vibrant orange */
+          --pico-primary: #000000; /* This would make buttons/links a vibrant orange */
 
         /* This changes the main body and UI font */
            --pico-font-family-sans-serif: 'Montserrat', sans-serif;
@@ -11,9 +11,10 @@
 
             --pico-font-weight: 400;
             --pico-header-font-weight: 800;
+            --pico-color: #000000;
 
         /* Force the background and general settings */
-        --pico-background-color: #fdf6e3 !important;
+        --pico-background-color: #ffffff !important;
         }
 
         h1, h2, h3 {
