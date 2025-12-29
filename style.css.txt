@@ -1,0 +1,20 @@
+ :root {
+        /* This changes the main background color #fdf6e3*/
+          --pico-background-color: #fdf6e3 !important; 
+          
+          --pico-primary: #ff5733; /* This would make buttons/links a vibrant orange */
+
+        /* This changes the main body and UI font */
+           --pico-font-family-sans-serif: 'Montserrat', sans-serif;
+            
+        /* This ensures headings and everything else follow suit */
+            --pico-font-family: 'Montserrat', sans-serif;
+
+        /* Force the background and general settings */
+        --pico-background-color: #fdf6e3 !important;
+        }
+
+        /* The "Final Word" for the whole page */
+        body, input, select, textarea, button {
+        font-family: 'Montserrat', sans-serif !important;
+        }
