@@ -154,6 +154,7 @@ video, .video-container iframe {
   /* 3. When the 'active' class is added via JS, show the menu */
   .nav-links.active {
     display: flex !important;
+    background: pink;
   }
   
   nav {

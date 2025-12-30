@@ -23,7 +23,7 @@
             
             <ul class="mobile-menu-toggle">
                 <li>
-                <a href="#" onclick="toggleMenu(); return false;" role="button" class="outline">☰</a>                
+                    <a href="#" id="menu-button" role="button" class="outline">☰</a>                
                 </li>
             </ul>
 
@@ -76,17 +76,20 @@
     </script>-->
 
     <script>
-  function toggleMenu() {
-    // 1. Find the element
-    var menu = document.getElementById("nav-links");
+  // Wait for the page to finish loading
+  document.addEventListener('DOMContentLoaded', function() {
     
-    // 2. Check if it exists to avoid errors
-    if (menu) {
-      // 3. Toggle the "active" class
-      menu.classList.toggle("active");
-      console.log("Menu toggled!"); // This helps you debug
+    const btn = document.getElementById('menu-button');
+    const nav = document.getElementById('nav-links');
+
+    if (btn && nav) {
+      btn.addEventListener('click', function(event) {
+        event.preventDefault(); // Stops the page from jumping to the top
+        nav.classList.toggle('active');
+        console.log("Menu button clicked and toggled!");
+      });
     }
-  }
+  });
 </script>
 </body>
 </html>
