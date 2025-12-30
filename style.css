@@ -17,7 +17,50 @@
         --pico-background-color: #ffffff !important;
         }
 
-        /* The "Final Word" for the whole page */
-        body, input, select, textarea, button {
-        font-family: 'Montserrat', sans-serif !important;
-        }
+/* The "Final Word" for the whole page */
+body, input, select, textarea, button {
+font-family: 'Montserrat', sans-serif !important;
+}
+
+table {
+  text-align: center;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto; /* These two lines center the narrowed table */
+  border: 2px solid #000000; 
+  border-radius: 8px;        /* Matches the rounded corners we talked about! */
+  border-collapse: separate; /* Required for border-radius to show up on tables */
+  border-spacing: 0;         /* Removes gaps between cells and the outer border */
+}
+
+/* This styles all table headers and cells at once */
+th, td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 10px !important; /* Smaller internal spacing */
+  border: 1px solid #e2e8f0; /* A light grey color */
+}
+
+/* 2. Specific property for the LEFT column only */
+th {
+  font-weight: 800; /* Extra bold */
+}
+
+/* 3. Specific property for the RIGHT column only */
+td {
+  font-weight: 400; /* Normal weight */
+}
+
+.cropped-square {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* This is the magic! It crops the edges instead of squishing */
+  object-position: center; /* Ensures the middle of the photo stays visible */
+  border-radius: 20px;
+}
+
+.grid {
+  display: grid;
+  align-items: center; /* This is the magic line that centers them lengthwise */
+  gap: 2rem;           /* Keeps a nice gap between the table and image */
+}
