@@ -137,7 +137,7 @@ video, .video-container iframe {
 /* 2. Mobile Styles */
 @media (max-width: 600px) {
   .mobile-menu-toggle {
-    display: block; /* Show hamburger on mobile */
+    display: block !important; /* Show hamburger on mobile */
   }
 
   .nav-links {
