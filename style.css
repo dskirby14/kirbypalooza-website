@@ -64,3 +64,24 @@ td {
   align-items: center; /* This is the magic line that centers them lengthwise */
   gap: 2rem;           /* Keeps a nice gap between the table and image */
 }
+
+.gallery-grid {
+  display: grid;
+  /* This line creates the responsive magic */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* keep them all square! */
+.uniform-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease; /* Adds a little 'lift' effect */
+}
+
+.uniform-box:hover {
+  transform: scale(1.03); /* Zooms in slightly when you hover over it */
+  cursor: pointer;
+}
