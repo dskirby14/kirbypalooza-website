@@ -43,7 +43,7 @@ th, td {
 
 /* 2. Specific property for the LEFT column only */
 th {
-  font-weight: 800; /* Extra bold */
+  font-weight: 700; /* Bold */
 }
 
 /* 3. Specific property for the RIGHT column only */
