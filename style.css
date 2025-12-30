@@ -22,6 +22,11 @@ body, input, select, textarea, button {
 font-family: 'Montserrat', sans-serif !important;
 }
 
+/* 1. Hide the hamburger icon on Desktop */
+.mobile-menu-toggle {
+  display: none;
+}
+
 table {
   text-align: center;
   width: auto;
@@ -127,10 +132,7 @@ video, .video-container iframe {
   }
 */
 
-/* 1. Hide the hamburger icon on Desktop */
-.mobile-menu-toggle {
-  display: none;
-}
+
 
 /* 2. Mobile Styles */
 @media (max-width: 600px) {
