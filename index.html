@@ -23,7 +23,7 @@
             
             <ul class="mobile-menu-toggle">
                 <li>
-                <a href="javascript:void(0);" onclick="toggleMenu()" role="button" class="outline">☰</a>
+                <a href="#" onclick="toggleMenu(); return false;" role="button" class="outline">☰</a>                
                 </li>
             </ul>
 
@@ -77,11 +77,14 @@
 
     <script>
   function toggleMenu() {
-    var x = document.getElementById("nav-links");
-    if (x.classList.contains("active")) {
-      x.classList.remove("active");
-    } else {
-      x.classList.add("active");
+    // 1. Find the element
+    var menu = document.getElementById("nav-links");
+    
+    // 2. Check if it exists to avoid errors
+    if (menu) {
+      // 3. Toggle the "active" class
+      menu.classList.toggle("active");
+      console.log("Menu toggled!"); // This helps you debug
     }
   }
 </script>
