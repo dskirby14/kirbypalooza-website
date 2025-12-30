@@ -93,35 +93,3 @@ video, .video-container iframe {
   margin: 0 auto;
   border-radius: 20px;
 }
-
-@media (max-width: 600px) {
-  /* 1. Force the nav container to allow vertical stacking */
-  nav {
-    height: auto !important;
-    flex-direction: column !important;
-    padding: 1rem 0 !important;
-  }
-
-  /* 2. Target the lists inside the nav */
-  nav ul {
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* 3. Give each button some breathing room and make them full width */
-  nav ul li {
-    width: 100% !important;
-    padding: 5px 0 !important;
-    text-align: center;
-    display: block !important;
-  }
-
-  /* 4. Ensure the buttons don't have invisible margins pushing them sideways */
-  .nav-button, [role="button"] {
-    display: block !important;
-    width: 90%; /* Leaves a little gap on the sides */
-    margin: 0 auto !important; 
-  }
