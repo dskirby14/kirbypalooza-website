@@ -93,3 +93,28 @@ video, .video-container iframe {
   margin: 0 auto;
   border-radius: 20px;
 }
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column; /* Stacks the logo and the links */
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column; /* Stacks the buttons on top of each other */
+    width: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  nav ul li {
+    width: 100%; /* Makes buttons full-width for easy tapping */
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  .nav-button {
+    display: block; /* Ensures the button fills the width */
+    width: 100%;
+  }
+}
