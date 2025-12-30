@@ -15,28 +15,9 @@
 
 
 <body>
-    <header class="container">
-        <nav class="container">
-            <ul>
-                <li><strong>Kirbypalooza</strong></li>
-            </ul>
-            
-            <ul class="mobile-menu-toggle">
-                <li>
-                    <a href="#" id="menu-button" role="button" class="outline">☰</a>                
-                </li>
-            </ul>
-
-            <ul id="nav-links" class="nav-links">
-                <li><a href="index.html" class="nav-button">Home</a></li>
-                <li><a href="rsvp.html" class="nav-button">RSVP HERE!</a></li>
-                <li><a href="gallery.html" class="nav-button">Gallery</a></li>
-                <li><a href="Hall of Fame.html" class="nav-button">Hall of Fame</a></li>
-                <li><a href="Where is Steve.html" class="nav-button">Where is Steve?</a></li>
-                <li><a href="about.html" class="nav-button">About</a></li>
-            </ul>
-        </nav>  
-        <!--
+    <header>
+       
+        
             <ul>
                 <li><strong>Kirbypalooza</strong></li>
             </ul>
@@ -49,7 +30,7 @@
                 <li><a href="about.html" role="button">About</a></li>
             </ul>
         </nav>
-        -->
+    
     </header>
 
     <main class="container" style="text-align: center;">
@@ -68,28 +49,5 @@
         <small>© 2025 Kirbypalooza</small>
     </footer>
 
-    <!--<script>
-    function toggleMenu() {
-        const navLinks = document.getElementById('nav-links');
-        navLinks.classList.toggle('active');
-    }
-    </script>-->
-
-    <script>
-  // Wait for the page to finish loading
-  document.addEventListener('DOMContentLoaded', function() {
-    
-    const btn = document.getElementById('menu-button');
-    const nav = document.getElementById('nav-links');
-
-    if (btn && nav) {
-      btn.addEventListener('click', function(event) {
-        event.preventDefault(); // Stops the page from jumping to the top
-        nav.classList.toggle('active');
-        console.log("Menu button clicked and toggled!");
-      });
-    }
-  });
-</script>
 </body>
 </html>

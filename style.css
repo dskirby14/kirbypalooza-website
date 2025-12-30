@@ -22,11 +22,6 @@ body, input, select, textarea, button {
 font-family: 'Montserrat', sans-serif !important;
 }
 
-/* 1. Hide the hamburger icon on Desktop */
-.mobile-menu-toggle {
-  display: none;
-}
-
 table {
   text-align: center;
   width: auto;
@@ -98,16 +93,16 @@ video, .video-container iframe {
   margin: 0 auto;
   border-radius: 20px;
 }
-/*
+
 @media (max-width: 600px) {
-  /* 1. Force the nav container to allow vertical stacking 
+  /* 1. Force the nav container to allow vertical stacking */
   nav {
     height: auto !important;
     flex-direction: column !important;
     padding: 1rem 0 !important;
   }
 
-  /* 2. Target the lists inside the nav 
+  /* 2. Target the lists inside the nav */
   nav ul {
     flex-direction: column !important;
     align-items: center !important;
@@ -116,7 +111,7 @@ video, .video-container iframe {
     padding: 0 !important;
   }
 
-  /* 3. Give each button some breathing room and make them full width 
+  /* 3. Give each button some breathing room and make them full width */
   nav ul li {
     width: 100% !important;
     padding: 5px 0 !important;
@@ -124,42 +119,9 @@ video, .video-container iframe {
     display: block !important;
   }
 
-  /* 4. Ensure the buttons don't have invisible margins pushing them sideways 
+  /* 4. Ensure the buttons don't have invisible margins pushing them sideways */
   .nav-button, [role="button"] {
     display: block !important;
-    width: 90%; /* Leaves a little gap on the sides 
+    width: 90%; /* Leaves a little gap on the sides */
     margin: 0 auto !important; 
   }
-*/
-
-
-
-/* 2. Mobile Styles */
-@media (max-width: 600px) {
-  .mobile-menu-toggle {
-    display: block !important; /* Show hamburger on mobile */
-  }
-
-  .nav-links {
-    display: none; /* Hide links by default on mobile */
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background: #fff; /* Match your site background */
-    padding: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  /* 3. When the 'active' class is added via JS, show the menu */
-  .nav-links.active {
-    display: flex !important;
-    background: pink;
-  }
-  
-  nav {
-    position: relative;
-  }
-}
