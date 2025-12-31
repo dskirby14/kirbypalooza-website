@@ -93,3 +93,24 @@ video, .video-container iframe {
   margin: 0 auto;
   border-radius: 20px;
 }
+
+/* This centers both the text you type AND the placeholder */
+input, textarea {
+  text-align: center;
+}
+
+/* This specifically targets the placeholder text for better browser support */
+::placeholder {
+  text-align: center;
+}
+
+/* Optional: If you use Pico.css and want to ensure the labels are centered too */
+label {
+  display: block;
+  text-align: center;
+}
+
+#rsvp-form {
+  max-width: 800px;
+  margin: 0 auto; /* This centers the entire form on the screen */
+}

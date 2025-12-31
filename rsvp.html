@@ -29,21 +29,80 @@
   </header>
 
   <main class="container" style="text-align: center;">
-    <section id="contact">
-            <h2>Get in Touch</h2>
-            <form action="YOUR_GOOGLE_SCRIPT_URL_HERE" method="POST">
-                <div class="grid">
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-                <textarea name="message" placeholder="Your message..."></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-  </main>
+      <h2>RSVP for Kirbypalooza!</h2>
+  
+      <form id="rsvp-form">
+        <div class="grid">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+
+          <div>
+            <label for="phone">Email</label>
+            <input type="phone" id="phone" name="phone" placeholder="yourmom@kirbypalooza.com" required>
+           </div>
+
+          <div>
+            <label for="rsvp">Number of guests?</label>
+            <input type="number" id="rsvp" name="rsvp" value="1" min="1">
+          </div>
+        </div>
+        
+        <div class="grid">          
+          <div>
+            <label for="shirt">Shirt size?</label>
+            <input type="text" id="shirt" name="shirt" placeholder="XS, S, M, L, XL, XXL" required>
+          </div>
+
+          <div>
+            <label for="song">Song requests?</label>
+            <input type="text" id="song" name="song" placeholder="No country">
+          </div>
+
+          <div>
+            <label for="childcare">Do you need childcare?</label>
+            <input type="text" id="childcare" name="childcare" placeholder="Yes or No" required>
+          </div>
+        </div>
+               
+        <button type="submit" id="submit-btn">Send RSVP</button>
+
+      </form>
+  
+    <div id="form-message" style="display:none; padding: 1rem; background: #d4edda; color: #155724; border-radius: 8px;">
+      Thanks! Your RSVP has been sent. 🌟
+    </div>
+
+
+</main>
 
   <footer class="container">
     <small>© 2025 Kirbypalooza</small>
   </footer>
+
+  <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzj6xzWzX2lMG3aXpALNi2eEEXW7ie-DpY7xiGdKbVJlTr_IzsuI2ejIWS3NJJ5DPzw/exec';
+  const form = document.getElementById('rsvp-form');
+  const msg = document.getElementById('form-message');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.innerText = "Sending...";
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          form.style.display = 'none';
+          msg.style.display = 'block';
+      })
+      .catch(error => {
+          console.error('Error!', error.message);
+          btn.disabled = false;
+          btn.innerText = "Try Again";
+      });
+  });
+</script>
 </body>
 </html>
