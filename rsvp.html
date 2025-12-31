@@ -32,6 +32,11 @@
       <h2>RSVP for Kirbypalooza!</h2>
   
       <form id="rsvp-form">
+        <!--<div>
+          <label for="rsvp">Number of guests?</label>
+          <input type="number" id="rsvp" name="rsvp" value="1" min="1">
+        </div>-->
+        
         <div class="grid">
           <div>
             <label for="name">Name</label>
@@ -40,31 +45,41 @@
 
           <div>
             <label for="phone">Phone Number</label>
-            <input type="phone" id="phone" name="phone" placeholder="We won't sell it" required>
+            <input type="phone" id="phone" name="phone" placeholder="For text reminders" required>
            </div>
-
-          <div>
-            <label for="rsvp">Number of guests?</label>
-            <input type="number" id="rsvp" name="rsvp" value="1" min="1">
-          </div>
         </div>
         
         <div class="grid">          
           <div>
-            <label for="shirt">Shirt size?</label>
-            <input type="text" id="shirt" name="shirt" placeholder="XS, S, M, L, XL, XXL" required>
+            <label for="song">Shirt Size</label>
+            <select name="size">
+              <option value="" disabled selected>Shirt Size</option>
+              <option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option>
+            </select>
           </div>
 
           <div>
-            <label for="song">Song requests?</label>
+            <label for="song">Song Requests</label>
             <input type="text" id="song" name="song" placeholder="No country">
           </div>
+        </div>
+                  
+        <div class="grid">          
+          <div>
+            <label for="song">Childcare Needed?</label>
+            <select name="childcare">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
 
           <div>
-            <label for="childcare">Do you need childcare?</label>
-            <input type="text" id="childcare" name="childcare" placeholder="Yes or No" required>
+            <label for="guest-count">Number of Guests</label>
+            <input type="number" id="guest-count" name="guests" value="1" min="1" max="10">
           </div>
         </div>
+
+        <div id="extra-guests-container"></div>
                
         <button type="submit" id="submit-btn">Send RSVP</button>
 
@@ -77,31 +92,117 @@
 
 </main>
 
-  <footer class="container">
+  <footer class="container" style="text-align: right;">
     <small>© 2025 Kirbypalooza</small>
   </footer>
 
-  <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbx_DN4DRlRJ1OPyx-_TRvemLaLZa4HWWxa41fIjq4Ox_faQj6SKMLBAYtqUKBjBTJK7/exec';
+<script>
+  // 1. CONFIGURATION - Paste your Web App URL here
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxAlf9vl8vsptN8x-xMmKxjmmQ_IedfYaOgCY5JLlZLDb4GHKrbGwitJ6WPWeEANpna/exec';
+  
   const form = document.getElementById('rsvp-form');
+  const guestInput = document.getElementById('guest-count');
+  const extraContainer = document.getElementById('extra-guests-container');
   const msg = document.getElementById('form-message');
   const btn = document.getElementById('submit-btn');
 
-  form.addEventListener('submit', e => {
+  // 2. LIVE LISTENER: Adds/Removes extra guest fields instantly
+  guestInput.addEventListener('input', () => {
+    const count = parseInt(guestInput.value);
+    extraContainer.innerHTML = ''; // Clear existing fields
+
+    // Loop starts at 2 because Guest 1 is the main form user
+    for (let i = 2; i <= count; i++) {
+      const guestDiv = document.createElement('div');
+      guestDiv.style.marginTop = "1.5rem";
+      guestDiv.innerHTML = `
+        <hr>
+        <p><strong>Guest ${i} Details</strong></p>
+        <div class="grid">
+          <div>
+            <label>Name</label>
+            <input type="text" name="guest_${i}_name" placeholder="Guest Name" required>
+          </div>
+          <div>
+            <label>Phone</label>
+            <input type="tel" name="guest_${i}_phone" placeholder="Phone">
+          </div>
+          <div>
+            <label>T-Shirt</label>
+            <select name="guest_${i}_size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+        </div>
+      `;
+      extraContainer.appendChild(guestDiv);
+    }
+  });
+
+  // 3. SUBMIT HANDLER: Loops and sends each guest as a separate row
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     btn.disabled = true;
-    btn.innerText = "Sending...";
+    btn.innerText = "Saving RSVPs...";
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-          form.style.display = 'none';
-          msg.style.display = 'block';
-      })
-      .catch(error => {
-          console.error('Error!', error.message);
-          btn.disabled = false;
-          btn.innerText = "Try Again";
+    // Capture shared info
+    const songRequest = form.querySelector('[name="song"]').value;
+    const childcare = form.querySelector('[name="childcare"]').value;
+    const totalGuests = parseInt(guestInput.value);
+
+    // Prepare a list of all guests to send
+    let guestsToSend = [];
+
+    // Add Primary Guest (Guest 1)
+    guestsToSend.push({
+      name: form.querySelector('[name="name"]').value,
+      phone: form.querySelector('[name="phone"]').value,
+      size: form.querySelector('[name="size"]').value,
+      song: songRequest,
+      childcare: childcare
+    });
+
+    // Add Additional Guests
+    for (let i = 2; i <= totalGuests; i++) {
+      guestsToSend.push({
+        name: form.querySelector(`[name="guest_${i}_name"]`).value,
+        phone: form.querySelector(`[name="guest_${i}_phone"]`).value,
+        size: form.querySelector(`[name="guest_${i}_size"]`).value,
+        song: songRequest,
+        childcare: childcare
       });
+    }
+
+    // Send each guest to Google Sheets one by one
+    try {
+      for (const guest of guestsToSend) {
+        const formData = new FormData();
+        formData.append('name', guest.name);
+        formData.append('phone', guest.phone);
+        formData.append('size', guest.size);
+        formData.append('song', guest.song);
+        formData.append('childcare', guest.childcare);
+
+        await fetch(scriptURL, { 
+          method: 'POST', 
+          mode: 'no-cors', 
+          body: formData 
+        });
+      }
+
+      // Hide form and show success
+      form.style.display = 'none';
+      msg.style.display = 'block';
+      msg.innerText = "All RSVPs have been saved! 🌟";
+      
+    } catch (error) {
+      console.error('Error!', error.message);
+      btn.disabled = false;
+      btn.innerText = "Try Again";
+    }
   });
 </script>
 </body>
