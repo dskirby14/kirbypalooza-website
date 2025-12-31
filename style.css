@@ -1,3 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+main.container {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+header {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: flow-root; /* This is a "magic" fix for margin collapse */
+}
+
+/* Remove margin from the very first thing inside the header */
+header > *:first-child {
+  margin-top: 0 !important;
+}
+
+h1:first-of-type {
+  margin-top: 0;
+}
+
+* {
+  outline: 1px solid red !important;
+}
+
 :root, :root:not([data-theme="dark"]), [data-theme="light"] {        /* This changes the main background color #fdf6e3*/
           --pico-background-color: #ffffff !important; 
           
