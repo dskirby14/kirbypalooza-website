@@ -67,7 +67,8 @@
         <div class="grid">          
           <div>
             <label for="song">Childcare Needed?</label>
-            <select name="childcare">
+            <select name="childcare" required>
+              <option value="" disabled selected>We'll have babysitters</option>
               <option value="No">No</option>
               <option value="Yes">Yes</option>
             </select>
@@ -75,7 +76,7 @@
 
           <div>
             <label for="guest-count">Number of Guests</label>
-            <input type="number" id="guest-count" name="guests" value="1" min="1" max="10">
+            <input type="number" id="guest-count" name="guests" value="1" min="1" max="10" required>
           </div>
         </div>
 
