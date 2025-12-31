@@ -12,8 +12,7 @@
   
 </head>
 
-<body>
-    <header class="container">
+<body><header class="container">
         <nav>
             <ul>
                 <li><strong>Kirbypalooza</strong></li>
@@ -91,139 +90,137 @@
     <div id="form-message" style="display:none; padding: 1rem; background: #d4edda; color: #155724; border-radius: 8px;">
       Thanks! Your RSVP has been sent. 🌟
     </div>
-
-
-</main>
+  </main>
 
   <footer class="container" style="text-align: right;">
     <small>© 2025 Kirbypalooza</small>
   </footer>
 
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbw0YXxqtUAQHLpQhPBmrnyhF742UcZqQRbyderAg-JWcZvaaSC79ftYaUmDKH5xEDKb/exec';
-  const form = document.getElementById('rsvp-form');
-  const guestInput = document.getElementById('guest-count');
-  const extraContainer = document.getElementById('extra-guests-container');
-  const msg = document.getElementById('form-message');
-  const btn = document.getElementById('submit-btn');
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw0YXxqtUAQHLpQhPBmrnyhF742UcZqQRbyderAg-JWcZvaaSC79ftYaUmDKH5xEDKb/exec';
+    const form = document.getElementById('rsvp-form');
+    const guestInput = document.getElementById('guest-count');
+    const extraContainer = document.getElementById('extra-guests-container');
+    const msg = document.getElementById('form-message');
+    const btn = document.getElementById('submit-btn');
 
-  // --- 1. THE FORMATTING LOGIC ---
-  function formatPhoneNumber(value) {
-    if (!value) return value;
-    const phoneNumber = value.replace(/[^\d]/g, '');
-    const phoneNumberLength = phoneNumber.length;
-    if (phoneNumberLength < 4) return phoneNumber;
-    if (phoneNumberLength < 7) {
-      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    // --- 1. THE FORMATTING LOGIC ---
+    function formatPhoneNumber(value) {
+      if (!value) return value;
+      const phoneNumber = value.replace(/[^\d]/g, '');
+      const phoneNumberLength = phoneNumber.length;
+      if (phoneNumberLength < 4) return phoneNumber;
+      if (phoneNumberLength < 7) {
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+      }
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
     }
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
-  }
 
-  // Apply formatting to the Primary Guest phone field
-  document.querySelector('[name="phone"]').addEventListener('input', (e) => {
-    e.target.value = formatPhoneNumber(e.target.value);
-  });
-
-  // --- 2. THE GUEST GENERATOR (The "Loop") ---
-  guestInput.addEventListener('input', () => {
-    const count = parseInt(guestInput.value);
-    extraContainer.innerHTML = ''; 
-
-    for (let i = 2; i <= count; i++) {
-      const guestDiv = document.createElement('div');
-      guestDiv.innerHTML = `
-        <hr>
-        <p><strong>Guest ${i} Details</strong></p>
-        <div class="grid">
-            <div>
-              <label>Name</label>
-              <input type="text" name="guest_${i}_name" placeholder="Guest Name" required>
-            </div>
-            <div>
-              <label>Phone</label>
-              <input type="text" name="guest_${i}_phone" placeholder="So we can remind you to carpool" maxlength="14">
-            </div>
-        </div>
-        <div class="grid">
-          <div>
-            <label>T-Shirt</label>
-            <select name="guest_${i}_size" required>
-              <option value="" disabled selected>For team shirts!</option>
-              <option value="S">S</option>
-              <option value="M" >M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="XXL">XXL</option>
-              <option value="Child">Child</option>
-            </select>
-          </div>
-          <div>
-            <label for="song">Song Requests</label>
-            <input type="text" id="song" name="song" placeholder="Bangers Only">
-          </div>
-        </div>
-      `;
-      extraContainer.appendChild(guestDiv);
-
-      // THIS IS THE FIX: We tell the computer to watch the NEW phone box we just made
-      const newPhoneInput = guestDiv.querySelector(`[name="guest_${i}_phone"]`);
-      newPhoneInput.addEventListener('input', (e) => {
-        e.target.value = formatPhoneNumber(e.target.value);
-      });
-    }
-  });
-
-  // --- 3. THE SUBMIT LOGIC ---
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    btn.disabled = true;
-    btn.innerText = "Saving RSVPs...";
-
-    const songRequest = form.querySelector('[name="song"]').value;
-    const childcare = form.querySelector('[name="childcare"]').value;
-    const totalGuests = parseInt(guestInput.value);
-
-    let guestsToSend = [];
-
-    // Guest 1
-    guestsToSend.push({
-      name: form.querySelector('[name="name"]').value,
-      phone: form.querySelector('[name="phone"]').value,
-      size: form.querySelector('[name="size"]').value,
-      song: songRequest,
-      childcare: childcare
+    // Apply formatting to the Primary Guest phone field
+    document.querySelector('[name="phone"]').addEventListener('input', (e) => {
+      e.target.value = formatPhoneNumber(e.target.value);
     });
 
-    // Extra Guests
-    for (let i = 2; i <= totalGuests; i++) {
+    // --- 2. THE GUEST GENERATOR (The "Loop") ---
+    guestInput.addEventListener('input', () => {
+      const count = parseInt(guestInput.value);
+      extraContainer.innerHTML = ''; 
+
+      for (let i = 2; i <= count; i++) {
+        const guestDiv = document.createElement('div');
+        guestDiv.innerHTML = `
+          <hr>
+          <p><strong>Guest ${i} Details</strong></p>
+          <div class="grid">
+              <div>
+                <label>Name</label>
+                <input type="text" name="guest_${i}_name" placeholder="Guest Name" required>
+              </div>
+              <div>
+                <label>Phone</label>
+                <input type="text" name="guest_${i}_phone" placeholder="So we can remind you to carpool" maxlength="14">
+              </div>
+          </div>
+          <div class="grid">
+            <div>
+              <label>T-Shirt</label>
+              <select name="guest_${i}_size" required>
+                <option value="" disabled selected>For team shirts!</option>
+                <option value="S">S</option>
+                <option value="M" >M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="Child">Child</option>
+              </select>
+            </div>
+            <div>
+              <label for="song">Song Requests</label>
+              <input type="text" id="song" name="song" placeholder="Bangers Only">
+            </div>
+          </div>
+        `;
+        extraContainer.appendChild(guestDiv);
+
+        // THIS IS THE FIX: We tell the computer to watch the NEW phone box we just made
+        const newPhoneInput = guestDiv.querySelector(`[name="guest_${i}_phone"]`);
+        newPhoneInput.addEventListener('input', (e) => {
+          e.target.value = formatPhoneNumber(e.target.value);
+        });
+      }
+    });
+
+    // --- 3. THE SUBMIT LOGIC ---
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.innerText = "Saving RSVPs...";
+
+      const songRequest = form.querySelector('[name="song"]').value;
+      const childcare = form.querySelector('[name="childcare"]').value;
+      const totalGuests = parseInt(guestInput.value);
+
+      let guestsToSend = [];
+
+      // Guest 1
       guestsToSend.push({
-        name: form.querySelector(`[name="guest_${i}_name"]`).value,
-        phone: form.querySelector(`[name="guest_${i}_phone"]`).value,
-        size: form.querySelector(`[name="guest_${i}_size"]`).value,
+        name: form.querySelector('[name="name"]').value,
+        phone: form.querySelector('[name="phone"]').value,
+        size: form.querySelector('[name="size"]').value,
         song: songRequest,
         childcare: childcare
       });
-    }
 
-    try {
-      for (const guest of guestsToSend) {
-        const formData = new FormData();
-        formData.append('name', guest.name);
-        formData.append('phone', guest.phone);
-        formData.append('size', guest.size);
-        formData.append('song', guest.song);
-        formData.append('childcare', guest.childcare);
-
-        await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData });
+      // Extra Guests
+      for (let i = 2; i <= totalGuests; i++) {
+        guestsToSend.push({
+          name: form.querySelector(`[name="guest_${i}_name"]`).value,
+          phone: form.querySelector(`[name="guest_${i}_phone"]`).value,
+          size: form.querySelector(`[name="guest_${i}_size"]`).value,
+          song: songRequest,
+          childcare: childcare
+        });
       }
-      form.style.display = 'none';
-      msg.style.display = 'block';
-      msg.innerText = "All RSVPs saved! 🌟";
-    } catch (error) {
-      btn.disabled = false;
-      btn.innerText = "Try Again";
-    }
-  });
-</script>
+
+      try {
+        for (const guest of guestsToSend) {
+          const formData = new FormData();
+          formData.append('name', guest.name);
+          formData.append('phone', guest.phone);
+          formData.append('size', guest.size);
+          formData.append('song', guest.song);
+          formData.append('childcare', guest.childcare);
+
+          await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: formData });
+        }
+        form.style.display = 'none';
+        msg.style.display = 'block';
+        msg.innerText = "All RSVPs saved! 🌟";
+      } catch (error) {
+        btn.disabled = false;
+        btn.innerText = "Try Again";
+      }
+    });
+  </script>
 </body>
 </html>
