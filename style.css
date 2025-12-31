@@ -140,3 +140,22 @@ select option[value=""] {
 select:valid {
   color: black;
 }
+
+.hero-image {
+  /* Fits the width of the screen on mobile */
+  width: 100%; 
+  
+  /* Prevents the image from being wider than its actual pixels */
+  max-width: 1200px; 
+
+  /* THE MAGIC LINE: Prevents vertical scrolling on computers */
+  /* vh stands for 'viewport height'. 90vh means 90% of the screen height. */
+  max-height: 90vh; 
+
+  /* Keeps the image from getting squished or stretched */
+  object-fit: contain; 
+  
+  /* Centers the image */
+  display: block;
+  margin: 0 auto;
+}
