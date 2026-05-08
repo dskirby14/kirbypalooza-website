@@ -12,12 +12,110 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, .serif { font-family: 'Playfair Display', serif; }
+
+        /* The Color Shift Animation */
+        @keyframes holidayShift {
+            0% { background-color: #be123c; }   /* Christmas Red */
+            25% { background-color: #15803d; }  /* St. Paddy's Green */
+            50% { background-color: #1d4ed8; }  /* July 4th Blue */
+            75% { background-color: #ea580c; }  /* Halloween Orange */
+            100% { background-color: #be123c; }
+        }
+
+        .animate-holiday {
+            animation: holidayShift 12s ease-in-out infinite;
+        }
+
+            @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .animate-scroll {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+
+    .snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Allows you to click buttons 'through' the snow */
+        z-index: 9999; /* Keeps it on top of everything */
+    }
+
+    .snow {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(4px 4px at 20px 30px, #fff, rgba(0,0,0,0)),
+            radial-gradient(3px 3px at 40px 70px, #fff, rgba(0,0,0,0)),
+            radial-gradient(5px 5px at 50px 160px, #fff, rgba(0,0,0,0)),
+            radial-gradient(4px 4px at 90px 40px, #fff, rgba(0,0,0,0));
+        background-size: 200px 200px; /* Controls the density of flakes */
+        animation: snowFall 10s linear infinite;
+        opacity: 0.8;
+    }
+
+    /* Create layers with different speeds for depth */
+    .snow-near { animation-duration: 7s; background-size: 300px 300px; opacity: 0.5; }
+    .snow-far { animation-duration: 15s; background-size: 150px 150px; opacity: 0.3; }
+
+    @keyframes snowFall {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(100vh); }
+    }
+
+    @keyframes witchFlight {
+        0% { 
+            transform: translateX(-10vw) translateY(0) scaleX(1); 
+            opacity: 0;
+        }
+        5% { opacity: 1; }
+        45% { transform: translateX(50vw) translateY(-20px) scaleX(1); }
+        95% { opacity: 1; }
+        100% { 
+            transform: translateX(110vw) translateY(0) scaleX(1); 
+            opacity: 0;
+        }
+    }
+
+    .animate-witch {
+        position: fixed;
+        top: 40%; /* Adjust height as needed */
+        left: -100px;
+        z-index: 10000; /* Above everything except maybe the snow */
+        pointer-events: none;
+        font-size: 3rem; /* Size of the witch */
+        /* Change 30s to make the flight faster/slower */
+        /* Change 60s to make her appear more/less often */
+        animation: witchFlight 20s linear infinite;
+        animation-delay: 5s; 
+    }
+
     </style>
 </head>
 
 <body class="bg-white text-slate-900 leading-normal overflow-x-hidden">
 
+    <div class="snow-container">
+        <div class="snow"></div>
+        <div class="snow snow-near"></div>
+        <div class="snow snow-far"></div>
+    </div>
+
+    <div class="animate-witch">
+        🧹
+        <span style="margin-left: -20px;">🧙‍♀️</span>
+    </div>
+
     <header class="w-full bg-white border-b border-slate-100">
+        <!--
         <div class="py-8 text-center">
             <h1 class="text-[12vw] md:text-8xl font-black tracking-tighter text-slate-950 uppercase">
                 KIRBYPALOOZA
@@ -25,7 +123,47 @@
             <p class="text-lg tracking-[0.4em] text-slate-950 uppercase mt-4 font-semibold">
                 June 27, 2026
             </p>
-        </div>      
+        </div>
+    -->
+        
+        <header class="w-full animate-holiday border-b border-white/10 transition-colors duration-1000">
+    <div class="py-20 text-center px-4">
+        <h1 class="text-[12vw] md:text-8xl font-black tracking-tighter text-white uppercase leading-none drop-shadow-2xl">
+            KIRBYPALOOZA 4: Holidays
+        </h1>
+        
+        <p class="text-lg md:text-5xl tracking-[0.4em] text-white uppercase mt-4 font-semibold">
+            June 27, 2026
+        </p>
+
+        <div class="mt-12 flex justify-center gap-4 md:gap-8 text-white font-black uppercase italic tracking-tighter">
+            <div class="text-center">
+                <span id="days" class="text-4xl md:text-6xl block">00</span>
+                <span class="text-[10px] md:text-xs tracking-widest opacity-60">Days</span>
+            </div>
+            <div class="text-center">
+                <span id="hours" class="text-4xl md:text-6xl block">00</span>
+                <span class="text-[10px] md:text-xs tracking-widest opacity-60">Hours</span>
+            </div>
+            <div class="text-center">
+                <span id="minutes" class="text-4xl md:text-6xl block">00</span>
+                <span class="text-[10px] md:text-xs tracking-widest opacity-60">Mins</span>
+            </div>
+            <div class="text-center">
+                <span id="seconds" class="text-4xl md:text-6xl block">00</span>
+                <span class="text-[10px] md:text-xs tracking-widest opacity-60">Secs</span>
+            </div>
+        </div>
+
+        <div class="mt-12 overflow-hidden whitespace-nowrap">
+            <div class="inline-block animate-[scroll_20s_linear_infinite] text-white/40 font-black uppercase italic tracking-widest text-2xl md:text-4xl opacity-30">
+                NYE • VALENTINE'S DAY • ST. PATTY'S • PI DAY • EARTH DAY • CINCO DE MAYO • JUNETEENTH • 4TH OF JULY • LABOR DAY • LEIF ERIKSON DAY • HALLOWEEN • THANKSGIVING • CHRISTMAS •&nbsp;
+            </div>
+            <div class="inline-block animate-[scroll_20s_linear_infinite] text-white/40 font-black uppercase italic tracking-widest text-2xl md:text-4xl opacity-50">
+                NYE • ST. PATTY'S • PI DAY • CINCO DE MAYO • JULY 4TH • HALLOWEEN • CHRISTMAS • ARBOR DAY •&nbsp;
+            </div>
+        </div>
+    </div>      
     </header>
 
 <nav class="sticky top-0 z-50 w-full bg-black text-white py-4 shadow-xl">
@@ -60,13 +198,13 @@
         
         <div class="relative z-10 text-center px-6">
             <h2 class="text-5xl md:text-7xl font-black text-white uppercase tracking-wide serif">
-                We got a website bitches
+                Invites coming soon
             </h2>
 
             
             <div class="mt-10">
                 <a href="rsvp.html" class="inline-block px-10 py-4 bg-white text-black font-bold uppercase tracking-widest rounded-sm hover:bg-slate-200 transition shadow-2xl">
-                    RSVP for 2025
+                    RSVP for Kirbypalooza 4
                 </a>
             </div>
         </div>
@@ -115,6 +253,56 @@
                 navLinks.classList.remove('flex');
             });
         });
+    </script>
+
+    <script>
+        const countdown = () => {
+            const eventDate = new Date("June 27, 2026 12:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+
+            // Math for days, hours, minutes and seconds
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            // Update the HTML
+            document.getElementById("days").innerText = d.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+
+            // If the date is passed
+            if (diff < 0) {
+                clearInterval(timer);
+                document.querySelector('.countdown-container').innerHTML = "LORE COMMENCED";
+            }
+        };
+
+        // Update every second
+        const timer = setInterval(countdown, 1000);
+        countdown(); // Run immediately on load
+    </script>
+
+    <script>
+        const witch = document.querySelector('.animate-witch');
+
+        function flyWitch() {
+            // Reset the position
+            witch.style.animation = 'none';
+            witch.offsetHeight; // trigger reflow
+            
+            // Apply the animation (once)
+            witch.style.animation = 'witchFlight 8s linear forwards';
+
+            // Set a random delay for the next flight (between 15 and 45 seconds)
+            const randomDelay = Math.random() * (45000 - 15000) + 15000;
+            setTimeout(flyWitch, randomDelay);
+        }
+
+        // Start the cycle
+        flyWitch();
     </script>
 
 </body>
