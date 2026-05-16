@@ -16,9 +16,10 @@
 </head>
 
 <body class="bg-white text-slate-900 leading-normal overflow-x-hidden">
+
     <header class="w-full bg-white border-b border-slate-100">
-        <div class="py-8 text-center">
-            <h1 class="text-[12vw] md:text-8xl font-black tracking-tighter text-slate-950 uppercase">
+        <div class="py-8 text-center px-4">
+            <h1 class="text-[12vw] md:text-8xl font-black tracking-tighter text-slate-950 uppercase leading-none">
                 KIRBYPALOOZA
             </h1>
             <p class="text-lg tracking-[0.4em] text-slate-950 uppercase mt-4 font-semibold">
@@ -48,69 +49,77 @@
     </div>
 </nav>
 
+    <main class="w-full px-6 py-12 max-w-5xl mx-auto">
+        <header class="mb-12 text-center">
+            <h2 class="text-4xl md:text-6xl font-black text-slate-950 tracking-tight">
+                Hall of Fame
+            </h2>
+        </header>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 text-center gap-8 items-start">
+                
+                <div class="bg-slate-50 rounded-2xl p-6 shadow-sm border text-center border-slate-100/50">
+                    <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 md:text-center">
+                        Longest Kegstand Winners
+                    </h4>
+                    <table class="w-full border-collapse">       
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="py-4 text-center font-black tracking-wider text-slate-950 text-sm">2025</th>
+                                <td class="py-4 text-center font-black text-slate-600 text-sm">Ben S</td>
+                            </tr>
 
-  <main class="max-w-5xl mx-auto px-6 py-12">
-    <h1>Hall of Fame</h1>
+                            <tr class="border-b border-slate-200/60">
+                                <th scope="row" class="py-4 text-center font-black tracking-wider text-slate-950 text-sm">2024</th>
+                                <td class="py-4 text-center text-slate-600 font-semibold text-sm">Micah K</td>
+                            </tr>
 
-  <hr>
-  <h2>Keg Stand</h2>
-  <div class="grid">
+                            <tr class="border-b border-slate-200/60">
+                                <th scope="row" class="py-4 text-center font-black tracking-wider text-slate-950 text-sm">2023</th>
+                                <td class="py-4 text-center text-slate-600 font-semibold text-sm">Gavin M</td>
+                            </tr>
 
-  <figure>
-    <h2>Leaderboard</h2>
-      <table class="striped">       
+                        </tbody>
+                    </table>
+                </div>
 
-        <tbody>
-          <tr>
-            <th scope="col">2023</th>
-            <td>Gavin M</td>
-          </tr>
+                <div class="text-center group">
+                    <div class="mb-4 overflow-hidden rounded-2xl shadow-xl border-4 border-black bg-slate-50">
+                        <img src="images/ben simpson keg stand victory.jpg" alt="two white dads with mustaches shaking hands holding a keg" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Current Champion</h4>
+                    <p class="text-2xl font-black text-slate-950 tracking-tight leading-none">Ben S</p>
+                </div>
 
-          <tr>
-            <th scope="col">2024</th>
-            <td>Micah K</td>
-          </tr>
-          
-          <tr>
-            <th scope="col">2025</th>
-            <td>Ben S</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-      </figure>
-
-      <div>
-        <h2>Current Champion<br>Ben S</h2>
-        <img src="images/ben simpson keg stand victory.jpg" alt="two white dads with mustaches shaking hands holding a keg" style="max-width: 100%; height: auto; border-radius: 12px;" class="cropped-square">
-      </div>
-
-      <div>
-        <h2>Current 2nd Place<br>Big Dumper</h2>
-        <img src="images/jarrett keg loser.jpg" alt="glasses guy posing" style="max-width: 100%; height: auto; border-radius: 12px;" class="cropped-square">
-      </div>
-      
-    </div>
+                <div class="text-center group">
+                    <div class="mb-4 overflow-hidden rounded-2xl shadow-md border border-slate-200/60 bg-slate-50">
+                        <img src="images/jarrett keg loser.jpg" alt="glasses guy posing" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">Current 2nd Place</h4>
+                    <p class="text-2xl font-black text-slate-600 tracking-tight leading-none">Big Dumper</p>
+                </div>
+                
+            </div>
+        </section>
     </main>
 
     <footer class="w-full bg-black text-slate-400 py-16 px-6 mt-20">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
-                <h3 class="text-white font-bold text-lg mb-4">The Tradition</h3>
-                <p class="text-sm leading-relaxed">
-                    Celebrating the Kirby legacy through high-stakes competition and elite-tier camaraderie since 2022.
+                <h3 class="text-white font-bold text-lg text-center mb-4">The Tradition</h3>
+                <p class="text-sm text-justify leading-relaxed">
+                    Someone at our wedding told me that the next time all these people will be in one place is at my funeral. I thought that was a stupid thing to tell someone at their wedding. Kirbypalooza was born in that moment. Fuck that guy.
                 </p>
             </div>
             <div>
-                <h3 class="text-white font-bold text-lg mb-4">Archive</h3>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="2024.html" class="hover:text-white transition">2024: Pirate Theme</a></li>
-                    <li><a href="2023.html" class="hover:text-white transition">2023: Renaissance</a></li>
-                    <li><a href="2022.html" class="hover:text-white transition">2022: Origins</a></li>
+                <h3 class="text-white text-center font-bold text-lg mb-4">Archive</h3>
+                <ul class="space-y-2 text-center text-sm">
+                    <li><a href="2025.html" class="hover:text-white transition">2025: Daddypalooza</a></li>
+                    <li><a href="2024.html" class="hover:text-white transition">2024: Trashypalooza</a></li>
+                    <li><a href="2023.html" class="hover:text-white transition">2023: Hawaiipalooza</a></li>
                 </ul>
             </div>
-            <div class="text-right">
+            <div class="text-left md:text-center">
                 <h3 class="text-white font-bold text-lg mb-4">Status</h3>
                 <p class="text-sm">Next Event: June 27, 2025</p>
                 <p class="text-xs mt-2 text-slate-600">© 2026 Kirbypalooza Global Media</p>
@@ -123,16 +132,13 @@
         const navLinks = document.getElementById('nav-links');
         const allLinks = document.querySelectorAll('#nav-links a');
 
-        // Toggle menu open/close
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('hidden');
             navLinks.classList.toggle('flex');
         });
 
-        // "Click-Away" logic: Close menu when any link is clicked
         allLinks.forEach(link => {
             link.addEventListener('click', () => {
-                // Only runs on mobile because 'hidden' is ignored by 'md:flex' on desktop
                 navLinks.classList.add('hidden');
                 navLinks.classList.remove('flex');
             });
